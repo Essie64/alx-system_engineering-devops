@@ -1,2 +1,2 @@
 #!/in/bash
-tr "A" "c" | tr "Z" "e"
+tr "A" "Z" | tr "c" "e"
