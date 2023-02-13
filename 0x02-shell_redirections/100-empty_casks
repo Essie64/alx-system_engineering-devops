@@ -1,0 +1,2 @@
+#!/bi/bash
+find ./ -type f -not -empty | wc -l
