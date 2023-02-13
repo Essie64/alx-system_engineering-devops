@@ -1,2 +1,2 @@
 #!/bi/bash
-find . -empty | rev | cut -d '/' -f 1 | rev
+find ./ -type f -empty | wc -l
