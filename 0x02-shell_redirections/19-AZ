@@ -1,2 +1,2 @@
 #!/in/bash
-tr '[A-c]' '[Z-e]'
+tr 'A-c' 'Z-e'
