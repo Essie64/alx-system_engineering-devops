@@ -4,3 +4,4 @@ a script to add /action to the PATH. /action should be the last directory the sh
 a script that counts the number of directories in the PATH
 a script that lists environment variables
 a script that lists all local variables and environment variables, and functions
+a script that creates a new local variable
