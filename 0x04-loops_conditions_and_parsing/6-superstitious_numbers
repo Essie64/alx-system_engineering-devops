@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Displays numbers from 1 to 20 in addition to:
+#  line 4 "bad luck from China" 
+#  line 9 "bad luck from Japan"
+#  line 17 "bad luck from Italy" 
+
+the_count=1
+
+while [ $the_count -le 20 ]
+do
+  echo "$the_count"
+  case $the_count in
+    "4") echo "bad luck from China";;
+    "9") echo "bad luck from Japan";;
+    "17") echo "bad luck from Italy";;
+  esac
+  (( the_count++ ))
+done
