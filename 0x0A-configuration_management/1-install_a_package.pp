@@ -1,3 +1,4 @@
+#!/usr/bin/pup
 # install package
 package { 'python3-pip':
   ensure => present,
