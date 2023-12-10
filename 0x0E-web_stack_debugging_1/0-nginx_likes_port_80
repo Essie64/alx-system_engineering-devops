@@ -1,33 +1,5 @@
 #!/usr/bin/env bash
 # Script: 0-nginx_likes_port_80
-# Description: Configures Nginx to listen on port 80.
-
-# Install net-tools if not installed
-apt-get update
-apt-get install -y net-tools
-
-# Check Nginx configuration for port 80
-nginx_config="/etc/nginx/sites-available/default"
-if grep -q "listen 80;" "$nginx_config"; then
-    echo "Nginx is already configured to listen on port 80"
-else
-    echo "Configuring Nginx to listen on port 80"
-    sed -i 's/listen 80 default_server;/listen 80;/g' "$nginx_config"
-fi
-
-# Restart Nginx
-service nginx restart
-
-# Check if Nginx is now listening on port 80
-if netstat -tuln | grep ":80 "; then
-    echo "Nginx is now listening on port 80"
-else
-    echo "Failed to configure Nginx to listen on port 80"
-    exit 1
-fi
-
-# Clean up - remove net-tools
-apt-get remove -y net-tools
-apt-get autoremove -y
-
-exit 0
+# Description: Debugging Nginx to listen on port 80.
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo service nginx restart
