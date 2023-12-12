@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+function audit_subdomain {
+    domain=$1
+    subdomain=$2
+
+    if [ -z "$subdomain" ]; then
+        subdomains=("www" "lb-01" "web-01" "web-02")
+    else
+        subdomains=("$subdomain")
+    fi
+
+    for sub in "${subdomains[@]}"; do
+        result=$(dig +short "$sub.$domain")
+
+        if [ -z "$result" ]; then
+            echo "The subdomain $sub does not exist for $domain"
+        else
+            record_type=$(dig "$sub.$domain" | awk '/ANSWER SECTION:/ {getline; print $4}')
+            echo "The subdomain $sub is a $record_type record and points to $result"
+        fi
+    done
+}
+
+# Replace these values with your actual domain and IP addresses
+domain="ekubania.tech"
+lb_ip="52.91.118.94"
+web_01_ip="34.232.70.187"
+web_02_ip="34.204.101.142"
+
+# Check if the script is called with the correct number of arguments
+if [ "$#" -lt 1 ] || [ "$#" -gt 2 ]; then
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
+fi
+
+# Call the function with provided arguments
+audit_subdomain "$1" "$2"
+
