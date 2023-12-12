@@ -26,5 +26,5 @@ frontend http-in
 
 backend servers
     balance roundrobin
-    server server1 34.232.70.187 check
-    server server2 34.204.101.142 check
+    server  267328-web-01 34.232.70.187 check
+    server 267328-web-02 34.204.101.142 check
