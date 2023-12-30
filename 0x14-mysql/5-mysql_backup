@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Check if the password is provided as an argument
+if [ -z "$1" ]; then
+    echo "Usage: $0 <mysql_password>"
+    exit 1
+fi
+
+# Set the MySQL root password
+mysql_password="$1"
+
+# Get the current date in the required format
+current_date=$(date '+%d-%m-%Y')
+
+# Create a MySQL dump named backup.sql
+mysqldump -u root -p"$mysql_password" --all-databases > backup.sql
+
+# Check if mysqldump was successful
+if [ $? -ne 0 ]; then
+    echo "Error: MySQL dump failed. Please check your credentials."
+    exit 1
+fi
+
+# Create a compressed archive with the specified name format
+tar -czvf "$current_date.tar.gz" backup.sql
+
+# Clean up - remove the original SQL dump file
+rm backup.sql
+
+echo "MySQL dump and compression completed successfully. Archive: $current_date.tar.gz"
