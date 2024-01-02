@@ -1,25 +1,28 @@
 #!/usr/bin/python3
 """
-Module Docs
+Script to gather data from a given REST API
 """
 import requests
-import sys
+from sys import argv
+
 
 if __name__ == "__main__":
-    employee_id = sys.argv[1]
-    base_url = 'https://jsonplaceholder.typicode.com/'
-    user_url = '{}users/{}'.format(base_url, employee_id)
-    todos_url = '{}todos?userId={}'.format(base_url, employee_id)
-    employee_template = "Employee {} is done with tasks"
-
-    user_response = requests.get(user_url)
-    employee_name = user_response.json().get('name')
-    print(employee_template.format(employee_name), end="")
-
-    todos_response = requests.get(todos_url)
-    completed_tasks = [task for task in todos_response.json() if task.get('completed')]
-    
-    print("({}/{}):".format(len(completed_tasks), len(todos_response.json())))
-    
-    for task in completed_tasks:
-        print("\t {}".format(task.get("title")))
+    if len(argv) > 1:
+        user = argv[1]
+        url = "https://jsonplaceholder.typicode.com/"
+        req = requests.get("{}users/{}".format(url, user))
+        name = req.json().get("name")
+        if name is not None:
+            jreq = requests.get(
+                "{}todos?userId={}".format(
+                    url, user)).json()
+            alltsk = len(jreq)
+            completedtsk = []
+            for t in jreq:
+                if t.get("completed") is True:
+                    completedtsk.append(t)
+            count = len(completedtsk)
+            print("Employee {} is done with tasks({}/{}):"
+                  .format(name, count, alltsk))
+            for title in completedtsk:
+                print("\t {}".format(title.get("title")))
