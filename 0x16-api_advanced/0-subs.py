@@ -15,19 +15,10 @@ def number_of_subscribers(subreddit):
     Returns:
         int: Number of subscribers or 0 if the subreddit is invalid.
     """
-    url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'Custom User Agent'}  # Set a custom User-Agent
-
-    try:
-        response = requests.get(url, headers=headers)
-
-        if response.status_code == 200:
-            data = response.json()
-            subscribers_count = data['data']['subscribers']
-            return subscribers_count
-        else:
-            return 0
-
-    except Exception as e:
-        print(f"Error: {e}")
-        return 0
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:76.0)\
+ Gecko/20100101 Firefox/76.0"}
+    res = requests.get(url, headers=headers)
+    if res.status_code == 200:
+        return res.json().get("data").get("subscribers")
+    return 0
