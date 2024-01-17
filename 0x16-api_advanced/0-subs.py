@@ -31,14 +31,3 @@ def number_of_subscribers(subreddit):
     except Exception as e:
         print(f"Error: {e}")
         return 0
-
-# Example usage
-if __name__ == '__main__':
-    import sys
-
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        subreddit = sys.argv[1]
-        subscribers_count = number_of_subscribers(subreddit)
-        print("{:d}".format(subscribers_count))
