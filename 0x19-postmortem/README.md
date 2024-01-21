@@ -1,12 +1,13 @@
 Postmortem: Web Stack Outage Incident
-
+🚨
+The Drama Unveiled 🎭
 Issue Summary
 Duration:
-Start Time: 2024-03-15 17:00 EAT
-End Time: 2024-03-15 20:30 EAT
+🚀 Start Time: 2024-03-15 17:00 EAT
+💔 End Time: 2024-03-15 20:30 EAT
 Impact:
-The login service was down for approximately 3.5 hours.
-Users experienced inability to log in, leading to a 30% user login failure rate during the outage.
+😱 The login service was down for approximately 3.5 hours.
+Users experienced inability to log in, leading to a 30% user login failure rate during the outage. The login service had a meltdown, leaving users stranded like emojis without smartphones.🤯 User login attempts resembled a game of musical chairs, but with fewer laughs.
 
 Timeline
 17:00 EAT:
@@ -27,7 +28,7 @@ After reviewing logs and network traffic, the issue identified as a misconfigura
 Authentication server configuration corrected, and login service restored.
 
 Root Cause and Resolution
-Root Cause:
+Root Cause (The villain)
 The outage was caused by an incorrect configuration change in the authentication server during routine maintenance.
 Resolution:
 The misconfiguration was identified and corrected by rolling back the recent changes.
