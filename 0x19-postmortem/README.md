@@ -61,6 +61,7 @@ Update the incident response plan to include specific steps for misconfiguration
 Conduct a review of recent changes to identify potential hidden misconfigurations.
 
 Lessons Learned
+
 This incident highlighted the critical importance of rigorous testing and validation for all configuration changes, even seemingly minor ones. The assumption that recent code deployments were the cause of the issue led to a delay in identifying the root cause.
 
 The misleading paths taken during the investigation underscore the need for systematic debugging and thorough log analysis. Additionally, ensuring prompt escalation to the appropriate teams can significantly reduce the time to resolution.
